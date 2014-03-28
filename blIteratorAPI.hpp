@@ -7,9 +7,9 @@
 // CLASS:           None
 // BASE CLASS:      None
 //
-// PURPOSE:         This API plays with the concept of iterators
-//                  to give "smart" functionality to generic data
-//                  buffers.
+// PURPOSE:         This API provides a flexible "smart" iterator, a
+//                  static array class, and a container class to wrap
+//                  raw static or dynamic arrays.
 //
 //                  The API introduces two types of iterators:
 //
@@ -76,29 +76,8 @@
 //                  http://www.barbatolabs.com
 //                  navyenzo@gmail.com
 //
-// LISENSE:         MIT-LICENCE
+// LICENSE:         MIT-LICENCE
 //                  http://www.opensource.org/licenses/mit-license.php
-//
-// DEPENDENCIES:
-//
-// NOTES:
-//
-// DATE CREATED:    Dec/30/2013
-//
-// DATE UPDATED:
-//-------------------------------------------------------------------
-
-
-//-------------------------------------------------------------------
-// Includes and libs needed for this file
-//-------------------------------------------------------------------
-#include <iterator>
-//-------------------------------------------------------------------
-
-
-//-------------------------------------------------------------------
-// Enums used for this file and sub-files
-//-------------------------------------------------------------------
 //-------------------------------------------------------------------
 
 
