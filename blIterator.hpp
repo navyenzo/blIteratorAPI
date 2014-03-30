@@ -61,20 +61,18 @@ private: // Private variables
     // to the data
     // point
 
-    iterator                                                            m_ptr;
+    iterator                                                        m_ptr;
 
     // The raw pointer
     // to the dat Container
 
-    blContainerPtr                                                      m_containerPtr;
+    blContainerPtr                                                  m_containerPtr;
 
 public: // Constructors and destructors
 
     // Default constructors
 
-    blIterator()
-    {
-    }
+    blIterator() = default;
 
     // Construct from container
 
@@ -120,11 +118,11 @@ public: // Constructors and destructors
 
     // Copy constructor
 
-    blIterator(const blIterator<blContainerType,blAdvanceDistanceFunctorType,blBeginEndFunctorType>& iterator) = default;
+    blIterator(const blIterator<blContainerType,blAdvanceDistanceFunctorType,blBeginEndFunctorType>&) = default;
 
     // Move constructor
 
-    blIterator(blIterator<blContainerType,blAdvanceDistanceFunctorType,blBeginEndFunctorType>&& iterator) = default;
+    blIterator(blIterator<blContainerType,blAdvanceDistanceFunctorType,blBeginEndFunctorType>&&) = default;
 
     // Destructor
 
@@ -388,7 +386,7 @@ public: // Public functions
     size_t                                                          max_size()const{return this->size();}
     bool                                                            empty()const{return (this->size() == 0);}
 
-public: // Special functions
+private: // Special functions
     
     // Function used
     // to advance the

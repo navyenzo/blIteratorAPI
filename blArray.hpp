@@ -57,6 +57,10 @@ public: // Constructors and destructors
 
     blArray(blArray<blDataType,blArraySize>&& array) = default;
 
+    // Initializer-list constructor
+
+    blArray(std::initializer_list<blDataType> theList);
+
     // Copy constructor
     // from a different
     // size and/or different
@@ -76,7 +80,7 @@ public: // Constructors and destructors
 
     template<typename blIteratorType>
     blArray(blIteratorType sourceBegin,
-            const blIteratorType& sourceEnd);
+            blIteratorType sourceEnd);
 
     // Destructor
 
@@ -86,10 +90,15 @@ public: // Constructors and destructors
 
 public: // Assignment operators
 
-    blArray<blDataType,blArraySize>&                        operator=(const blArray<blDataType,blArraySize>& array);
+    blArray<blDataType,blArraySize>&                        operator=(const blArray<blDataType,blArraySize>& array) = default;
 
     template<typename blDataType2,size_t blArraySize2>
     blArray<blDataType,blArraySize>&                        operator=(const blArray<blDataType2,blArraySize2>& array);
+
+    blArray<blDataType,blArraySize>&                        operator=(std::initializer_list<blDataType> theList);
+
+    template<typename blDataType2,size_t blArraySize2>
+    blArray<blDataType,blArraySize>&                        operator=(const blDataType2 (&staticArray)[blArraySize2]);
 
 public: // Public functions
 
@@ -188,6 +197,23 @@ inline blArray<blDataType,blArraySize>::blArray() : m_nullChar(0)
 
 //-------------------------------------------------------------------
 template<typename blDataType,size_t blArraySize>
+inline blArray<blDataType,blArraySize>::blArray(std::initializer_list<blDataType> theList) : m_nullChar(0)
+{
+    auto Iter1 = this->begin();
+    auto Iter2 = theList.begin();
+
+    for(;
+        Iter1 != this->end(),Iter2 != theList.end();
+        ++Iter1,++Iter2)
+    {
+        (*Iter1) = (*Iter2);
+    }
+}
+//-------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------
+template<typename blDataType,size_t blArraySize>
 template<typename blDataType2,size_t blArraySize2>
 inline blArray<blDataType,blArraySize>::blArray(const blArray<blDataType2,blArraySize2>& array) : m_nullChar(0)
 {
@@ -212,7 +238,7 @@ inline blArray<blDataType,blArraySize>::blArray(const blDataType2 (&staticArray)
     auto Iter1 = this->begin();
 
     for(size_t i = 0;
-        Iter1 != this->end(),i < blArraySize2;
+        Iter1 != this->end(), i < blArraySize2;
         ++Iter1,++i)
     {
         (*Iter1) = staticArray[i];
@@ -225,7 +251,7 @@ inline blArray<blDataType,blArraySize>::blArray(const blDataType2 (&staticArray)
 template<typename blDataType,size_t blArraySize>
 template<typename blIteratorType>
 inline blArray<blDataType,blArraySize>::blArray(blIteratorType sourceBegin,
-                                                const blIteratorType& sourceEnd) : m_nullChar(0)
+                                                blIteratorType sourceEnd) : m_nullChar(0)
 {
     auto Iter1 = this->begin();
 
@@ -234,19 +260,6 @@ inline blArray<blDataType,blArraySize>::blArray(blIteratorType sourceBegin,
         ++Iter1,sourceBegin)
     {
         (*Iter1) = (*sourceBegin);
-    }
-}
-//-------------------------------------------------------------------
-
-
-//-------------------------------------------------------------------
-template<typename blDataType,size_t blArraySize>
-inline blArray<blDataType,blArraySize>& blArray<blDataType,blArraySize>::operator=(const blArray<blDataType,blArraySize>& array)
-{
-    if(this != &array)
-    {
-        for(size_t i = 0; i < blArraySize; ++i)
-            m_container[i] = array[i];
     }
 }
 //-------------------------------------------------------------------
@@ -277,6 +290,25 @@ inline blArray<blDataType,blArraySize>& blArray<blDataType,blArraySize>::operato
 
 //-------------------------------------------------------------------
 template<typename blDataType,size_t blArraySize>
+inline blArray<blDataType,blArraySize>& blArray<blDataType,blArraySize>::operator=(std::initializer_list<blDataType> theList)
+{
+    auto Iter1 = this->begin();
+    auto Iter2 = theList.begin();
+
+    for(;
+        Iter1 != this->end(),Iter2 != theList.end();
+        ++Iter1,++Iter2)
+    {
+        (*Iter1) = (*Iter2);
+    }
+
+    return (*this);
+}
+//-------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------
+template<typename blDataType,size_t blArraySize>
 inline bool blArray<blDataType,blArraySize>::operator==(const blArray<blDataType,blArraySize>& array)const
 {
     if(this == &array)
@@ -286,7 +318,7 @@ inline bool blArray<blDataType,blArraySize>::operator==(const blArray<blDataType
     auto iter2 = array.cbegin();
 
     for(;
-        iter1 != cend(),iter2 != array.cend();
+        iter1 != cend();
         ++iter1,++iter2)
     {
         if((*iter1) != (*iter2))

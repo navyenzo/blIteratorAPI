@@ -96,13 +96,8 @@ struct blcrBeginEnd
 //
 // DEPENDENCIES:        - blAdvance
 //-------------------------------------------------------------------
-class blAdvanceLinearly
+struct blAdvanceLinearly
 {
-public:
-
-    blAdvanceLinearly(){}
-    ~blAdvanceLinearly(){}
-
     template<typename blIteratorType>
     static void         advance(blIteratorType& iter,
                                 const ptrdiff_t& howManyStepsToAdvanceIter,
@@ -152,13 +147,8 @@ public:
 //
 // DEPENDENCIES:        - blAdvance
 //-------------------------------------------------------------------
-class blAdvanceCircularly
+struct blAdvanceCircularly
 {
-public:
-
-    blAdvanceCircularly(){}
-    ~blAdvanceCircularly(){}
-
     template<typename blIteratorType>
     static void         advance(blIteratorType& iter,
                                 const ptrdiff_t& howManyStepsToAdvanceIter,
