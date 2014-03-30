@@ -136,8 +136,8 @@ files:
     public:
 
         // Define the iterator typedefs
-        typdef blRawIterator<double> iterator;
-        typdef blRawReverseIterator<double> reverse_iterator;
+        typdef blRawIterator<blDataType> iterator;
+        typdef blRawReverseIterator<blDataType> reverse_iterator;
         .
         .
         .
