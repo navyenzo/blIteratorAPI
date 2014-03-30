@@ -1,8 +1,8 @@
 **blIteratorAPI**
 =================
 
-*- A template library for custom iterators*
--------------------------------------------
+*- A template library for creating custom iterators*
+----------------------------------------------------
 
 
 
