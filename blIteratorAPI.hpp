@@ -52,7 +52,7 @@
 //
 //                    - It introduces the concept of an "Advance Functor"
 //
-//                      - This function is assigned by the user to
+//                      - This functor is specified by the user to
 //                        advance the iterator forward/backward in
 //                        different ways:
 //                      - For ex. advance the iterator linearly but
@@ -61,6 +61,29 @@
 //                      - Or the user can provide an "Advance Functor"
 //                        to advance the iterator whichever other
 //                        way.
+//
+//                    - It introduces the concept of a "begin/end" functor
+//
+//                      - This functor is specified by the user to
+//                        call the "begin" and "end" functions of a
+//                        container and to determine the type of
+//                        iterator.
+//
+//                        - The functor defines two static functions:
+//
+//                          - ::begin -- Calls the container's begin
+//                                       function, whatever that is.
+//                          - ::end -- Calls the container's "end"
+//                                     function, whatever that is.
+//
+//                        - For ex.  If we want to apply a smart iterator
+//                                   to a std::set, we would create a
+//                                   begin/end functor that would call
+//                                   the set's "begin" and "end" functions.
+//                                   Or maybe we want to traverse the
+//                                   set backwards, so the functor would
+//                                   call the set's "rbegin" and "rend"
+//                                   functions.
 //
 //                    - It gives random access to non-contiguous buffers
 //                      - For examples, buffers that don't offer random access
