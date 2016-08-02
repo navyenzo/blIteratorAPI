@@ -260,9 +260,7 @@ public: // Overloaded operators
 
     ptrdiff_t                                                       operator-(const blIterator<blContainerType,blAdvanceDistanceFunctorType,blBeginEndFunctorType>& iterator)const
     {
-        return blAdvanceDistanceFunctorType::distance(this->getPtr(),
-                                                      iterator.getPtr(),
-                                                      this->getDistanceFromBeginToIter(),
+        return blAdvanceDistanceFunctorType::distance(this->getDistanceFromBeginToIter(),
                                                       iterator.getDistanceFromBeginToIter(),
                                                       this->getDistanceFromIterToEnd(),
                                                       iterator.getDistanceFromIterToEnd());
@@ -270,18 +268,50 @@ public: // Overloaded operators
 
 public: // Public functions
 
-    // Function used to
+    // Functions used to
     // set the Container pointer
 
-    void                                                            setContainerPtr(blContainerType* containerPtr)
+    void                                                            setContainerPtr(blContainerType& container)
     {
+        auto containerPtr = get_shared_ptr(container);
+
         if(containerPtr != m_containerPtr)
         {
             m_containerPtr = containerPtr;
 
             if(m_containerPtr)
             {
-                (*this) = this->begin().getPtr();
+                (*this) = this->begin();
+            }
+        }
+    }
+
+    void                                                            setContainerPtr(const blContainerType& container)
+    {
+        auto containerPtr = get_shared_ptr(container);
+
+        if(containerPtr != m_containerPtr)
+        {
+            m_containerPtr = containerPtr;
+
+            if(m_containerPtr)
+            {
+                (*this) = this->begin();
+            }
+        }
+    }
+
+    void                                                            setContainerPtr(blContainerType* rawContainerPtr)
+    {
+        auto containerPtr = get_shared_ptr(rawContainerPtr);
+
+        if(containerPtr != m_containerPtr)
+        {
+            m_containerPtr = containerPtr;
+
+            if(m_containerPtr)
+            {
+                (*this) = this->begin();
             }
         }
     }

@@ -18,7 +18,7 @@
 //                                     to contiguous buffer storage classes.
 //
 //                  - Smart iterators -- They add "smart" functionality to
-//                                       buffers which already define raw
+//                                       buffers which already defined raw
 //                                       iterators.
 //                                       By specifying an "Advance" functor,
 //                                       the user can change the behaviour of
@@ -173,31 +173,31 @@ namespace blIteratorAPI
 
     // Define some useful linear iterators
 
-    template<typename blContainerType>
-    class blLinearIterator : public blIterator<blContainerType,blAdvanceLinearly,blBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blLinearIterator : public blIterator<blContainerType,blAdvanceLinearly,blBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blBeginEnd>::blIterator;};
 
-    template<typename blContainerType>
-    class blLinearConstIterator : public blIterator<blContainerType,blAdvanceLinearly,blcBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blcBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blLinearConstIterator : public blIterator<blContainerType,blAdvanceLinearly,blcBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blcBeginEnd>::blIterator;};
 
-    template<typename blContainerType>
-    class blLinearReverseIterator : public blIterator<blContainerType,blAdvanceLinearly,blrBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blrBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blLinearReverseIterator : public blIterator<blContainerType,blAdvanceLinearly,blrBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blrBeginEnd>::blIterator;};
 
-    template<typename blContainerType>
-    class blLinearConstReverseIterator : public blIterator<blContainerType,blAdvanceLinearly,blcrBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blcrBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blLinearConstReverseIterator : public blIterator<blContainerType,blAdvanceLinearly,blcrBeginEnd>{using blIterator<blContainerType,blAdvanceLinearly,blcrBeginEnd>::blIterator;};
 
     // Define some useful circular iterators
 
-    template<typename blContainerType>
-    class blCircularIterator : public blIterator<blContainerType,blAdvanceCircularly,blBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blCircularIterator : public blIterator<blContainerType,blAdvanceCircularly,blBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blBeginEnd>::blIterator;};
 
-    template<typename blContainerType>
-    class blCircularConstIterator : public blIterator<blContainerType,blAdvanceCircularly,blcBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blcBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blCircularConstIterator : public blIterator<blContainerType,blAdvanceCircularly,blcBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blcBeginEnd>::blIterator;};
 
-    template<typename blContainerType>
-    class blCircularReverseIterator : public blIterator<blContainerType,blAdvanceCircularly,blrBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blrBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blCircularReverseIterator : public blIterator<blContainerType,blAdvanceCircularly,blrBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blrBeginEnd>::blIterator;};
 
-    template<typename blContainerType>
-    class blCircularConstReverseIterator : public blIterator<blContainerType,blAdvanceCircularly,blcrBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blcrBeginEnd>::blIterator;};
+        template<typename blContainerType>
+        class blCircularConstReverseIterator : public blIterator<blContainerType,blAdvanceCircularly,blcrBeginEnd>{using blIterator<blContainerType,blAdvanceCircularly,blcrBeginEnd>::blIterator;};
 }
 //-------------------------------------------------------------------
 

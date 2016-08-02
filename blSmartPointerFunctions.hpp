@@ -68,39 +68,39 @@ public:
 //          of deleting the pointer or not.
 //-------------------------------------------------------------------
 template<typename blResourceType>
-inline std::shared_ptr<blResourceType> get_shared_ptr(blResourceType& TheResource)
+inline std::shared_ptr<blResourceType> get_shared_ptr(blResourceType& theResource)
 {
-    return std::shared_ptr<blResourceType>(&TheResource,null_deleter<blResourceType>());
+    return std::shared_ptr<blResourceType>(&theResource,null_deleter<blResourceType>());
 }
 
 template<typename blResourceType>
-inline std::shared_ptr<blResourceType const> get_const_shared_ptr(const blResourceType& TheResource)
+inline std::shared_ptr<blResourceType const> get_const_shared_ptr(const blResourceType& theResource)
 {
-    return std::shared_ptr<blResourceType const>(&TheResource,null_deleter<const blResourceType>());
+    return std::shared_ptr<blResourceType const>(&theResource,null_deleter<const blResourceType>());
 }
 
 template<typename blResourceType>
-inline std::shared_ptr<blResourceType> get_shared_ptr(blResourceType* TheResource)
+inline std::shared_ptr<blResourceType> get_shared_ptr(blResourceType* theResource)
 {
-    return std::shared_ptr<blResourceType>(TheResource,null_deleter<blResourceType>());
+    return std::shared_ptr<blResourceType>(theResource,null_deleter<blResourceType>());
 }
 
 template<typename blResourceType>
-inline std::shared_ptr<blResourceType const> get_const_shared_ptr(blResourceType const* TheResource)
+inline std::shared_ptr<blResourceType const> get_const_shared_ptr(blResourceType const* theResource)
 {
-    return std::shared_ptr<blResourceType const>(TheResource,null_deleter<const blResourceType>());
+    return std::shared_ptr<blResourceType const>(theResource,null_deleter<const blResourceType>());
 }
 
 template<typename blResourceType>
-inline std::shared_ptr<blResourceType> get_shared_ptr_and_delete_when_done(blResourceType* TheResource)
+inline std::shared_ptr<blResourceType> get_shared_ptr_and_delete_when_done(blResourceType* theResource)
 {
-    return std::shared_ptr<blResourceType>(TheResource);
+    return std::shared_ptr<blResourceType>(theResource);
 }
 
 template<typename blResourceType>
-inline std::shared_ptr<blResourceType const> get_const_shared_ptr_and_delete_when_done(blResourceType const* TheResource)
+inline std::shared_ptr<blResourceType const> get_const_shared_ptr_and_delete_when_done(blResourceType const* theResource)
 {
-    return std::shared_ptr<blResourceType const>(TheResource);
+    return std::shared_ptr<blResourceType const>(theResource);
 }
 //-------------------------------------------------------------------
 

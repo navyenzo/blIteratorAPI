@@ -123,9 +123,7 @@ struct blAdvanceLinearly
     }
 
     template<typename blIteratorType>
-    static ptrdiff_t    distance(const blIteratorType& iter1,
-                                 const blIteratorType& iter2,
-                                 const ptrdiff_t& distanceFromBeginToIter1,
+    static ptrdiff_t    distance(const ptrdiff_t& distanceFromBeginToIter1,
                                  const ptrdiff_t& distanceFromBeginToIter2,
                                  const ptrdiff_t& distanceFromIterToEnd1,
                                  const ptrdiff_t& distanceFromIterToEnd2)
@@ -191,15 +189,13 @@ struct blAdvanceCircularly
     }
 
     template<typename blIteratorType>
-    static ptrdiff_t    distance(const blIteratorType& iter1,
-                                 const blIteratorType& iter2,
-                                 const ptrdiff_t& distanceFromBeginToIter1,
+    static ptrdiff_t    distance(const ptrdiff_t& distanceFromBeginToIter1,
                                  const ptrdiff_t& distanceFromBeginToIter2,
                                  const ptrdiff_t& distanceFromIterToEnd1,
                                  const ptrdiff_t& distanceFromIterToEnd2)
     {
-        if(distanceFromIterToEnd1 >= distanceFromIterToEnd2)
-            return ( std::distance(iter1,iter2) );
+        if(distanceFromBeginToIter1 <= distanceFromBeginToIter2)
+            return ( distanceFromBeginToIter2 - distanceFromBeginToIter1 );
         else
         {
             return ( distanceFromIterToEnd1 + distanceFromBeginToIter2);
