@@ -78,8 +78,8 @@ public:
     blRawReverseIterator<blDataType>&           operator-=(const ptrdiff_t& movement){this->m_ptr += movement;return (*this);}
     blRawReverseIterator<blDataType>&           operator++(){--this->m_ptr;return (*this);}
     blRawReverseIterator<blDataType>&           operator--(){++this->m_ptr;return (*this);}
-    blRawReverseIterator<blDataType>            operator++(ptrdiff_t){auto temp(*this);--this->m_ptr;return temp;}
-    blRawReverseIterator<blDataType>            operator--(ptrdiff_t){auto temp(*this);++this->m_ptr;return temp;}
+    blRawReverseIterator<blDataType>            operator++(int){auto temp(*this);--this->m_ptr;return temp;}
+    blRawReverseIterator<blDataType>            operator--(int){auto temp(*this);++this->m_ptr;return temp;}
     blRawReverseIterator<blDataType>            operator+(const int& movement){auto oldPtr = this->m_ptr;this->m_ptr-=movement;auto temp(*this);this->m_ptr = oldPtr;return temp;}
     blRawReverseIterator<blDataType>            operator-(const int& movement){auto oldPtr = this->m_ptr;this->m_ptr+=movement;auto temp(*this);this->m_ptr = oldPtr;return temp;}
 
